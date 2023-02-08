@@ -6,6 +6,7 @@ import com.repository.DroneRepository;
 import com.request.DroneRequest;
 import com.request.LoadRequest;
 import com.request.State;
+import com.response.BatteryLevelResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,10 +25,6 @@ public class DroneServiceImpl implements DroneService{
         return droneRepository.save(drone);
     }
 
-    /**
-     * @param loadRequest
-     * @return
-     */
     @Override
     public Drone loadMedications(LoadRequest loadRequest) {
 
@@ -64,13 +61,9 @@ public class DroneServiceImpl implements DroneService{
         return droneRepository.getIdleDrones(State.IDLE.toString());
     }
 
-    /**
-     * @param serialNumber
-     * @return
-     */
     @Override
-    public double getDroneBatteryLevel(String serialNumber) {
-        return droneRepository.getDroneBatteryLevel(serialNumber);
+    public BatteryLevelResponse getDroneBatteryLevel(String serialNumber) {
+        return new BatteryLevelResponse(droneRepository.getDroneBatteryLevel(serialNumber));
     }
 
     private Drone prepareDroneObj(DroneRequest droneRequest) {

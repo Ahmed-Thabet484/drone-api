@@ -4,6 +4,7 @@ import com.entity.Drone;
 import com.entity.Medication;
 import com.request.DroneRequest;
 import com.request.LoadRequest;
+import com.response.BatteryLevelResponse;
 import com.service.DroneService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -39,7 +40,7 @@ public class DroneController {
     }
 
     @GetMapping(value = "/battery-level/{serialNumber}")
-    public double getDroneBatteryLevel(@PathVariable String serialNumber){
+    public BatteryLevelResponse getDroneBatteryLevel(@PathVariable String serialNumber){
         return this.droneService.getDroneBatteryLevel(serialNumber);
     }
 }

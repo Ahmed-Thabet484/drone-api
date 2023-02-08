@@ -4,6 +4,8 @@ import com.entity.Drone;
 import com.entity.Medication;
 import com.request.DroneRequest;
 import com.request.LoadRequest;
+import com.response.BatteryLevelResponse;
+
 import java.util.List;
 
 public interface DroneService {
@@ -16,5 +18,5 @@ public interface DroneService {
 
     List<Drone> getIdleDrones();
 
-    double getDroneBatteryLevel(String serialNumber);
+    BatteryLevelResponse getDroneBatteryLevel(String serialNumber);
 }
